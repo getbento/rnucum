@@ -6,7 +6,10 @@
       "main": {
         "title": "Main",
         "type": "section",
-        "items": {}
+        "items": {
+          "background_color": "color",
+          "header_image": "image"
+        }
       }
     }
   },
