@@ -1,0 +1,19 @@
+{
+  "theme": {
+    "name": "Awesome Design Theme",
+    "author": "The Design Team",
+    "fields": {
+      "main": {
+        "title": "Main",
+        "type": "section",
+        "items": {}
+      }
+    }
+  },
+  "navs": [
+    {
+      "name": "Main Navigation",
+      "slug": "main"
+    }
+  ]
+}
