@@ -19,6 +19,12 @@
 
         <h2>{{ theme.options.main.header_image.alt_text }}</h2>
         <img src="{{ theme.options.main.header_image.url }}" />
+        {% for insult in boxes.insults.all %}
+            <div>
+            <h1>{{ insult.name }}</h1>    
+            </div>
+        {% endfor %}
+
         <br>
         <em>Who made this theme? {{ theme.config.theme.name }}</em>
     </body>
