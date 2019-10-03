@@ -24,12 +24,12 @@
 
         {% for insult in boxes.insults.all %}
             <div>
-            <h1>{{ insults.name }}</h1>    
+            <h1>{{ insult.name }}</h1>    
             </div>
         {% endfor %}
 
         <br>
-        
+
         <em>Who made this theme? {{ theme.config.theme.name }}</em>
     </body>
 </html>
