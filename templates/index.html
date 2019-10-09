@@ -14,6 +14,10 @@
             
     </head>
     <body>
+        {% block body %}
+
+
+        
         <h4>
         Meow meow party Love too code
         </h4>
@@ -31,5 +35,9 @@
         <br>
 
         <em>Who made this theme? {{ theme.config.theme.name }}</em>
+
+
+
+    {% endblock %}
     </body>
 </html>
