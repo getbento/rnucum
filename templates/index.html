@@ -22,7 +22,9 @@
         
         <br>
 
-        {{ boxes.insults.all|random.name }}
+        {% set insult = boxes.insults.all|random %}
+        {{ insult.name }}
+        
         <br>
 
         <em>Who made this theme? {{ theme.config.theme.name }}</em>
