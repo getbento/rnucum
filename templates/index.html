@@ -22,12 +22,7 @@
         
         <br>
 
-        {% for insult in boxes.insults.all %}
-            <div>
-            <h1>{{ insult.name }}</h1>    
-            </div>
-        {% endfor %}
-
+        {{ boxes.insults.all|random }}
         <br>
 
         <em>Who made this theme? {{ theme.config.theme.name }}</em>
