@@ -14,63 +14,25 @@
             
     </head>
     <body>
-
         <nav>
-            <a href="/">Home</a>
-            <br>
             {% for item in navs.main %}
-            <a href="{{ item.url }}">{{ item.name }}</a><br>
+                <a href="{{ item.url }}">{{ item.name }}</a>
             {% endfor %}
-
-
         </nav>
-
-
-    
-        {% block body %}
-
-
-
-        <h4>
-        Meow meow party Love too code
-        </h4>
-
-        <hr>
-
-        <h2>{{ theme.options.main.header_image.alt_text }}</h2>
-        <img src="{{ theme.options.main.header_image.url }}" />
-        
-        <br>
-
-    
-        <h2>{{ insult.name }}</h2>
-        <br>
-<nav>
-    {% for item in navs.main %}
-        <a href="{{ item.url }}">{{ item.name }}</a>
-    {% endfor %}
-</nav>
 {% block body %}
-<main class=“insult-container”>
-<h1>{{ insult.name }}</h1>
-</main>
-<div class=“controls”>
-    <div class=“refresh”>
-        <button type=“submit” onclick=refreshPage()>refresh</button>
-    </div>
-</div>
+    <main class=“insult-container”>
+        <h1>{{ insult.name }}</h1>
+    </main>
+        <div class=“controls”>
+            <div class=“refresh”>
+                <button type=“submit” onclick=refreshPage()>refresh</button>
+            </div>
+        </div>
 {% endblock %}
-<script>
-function refreshPage(){
-    window.location.reload();
-}
-</script>
-        <br>
-
-        <em>Who made this theme? {{ theme.config.theme.name }}</em>
-
-
-
-    {% endblock %}
+    <script>
+        function refreshPage(){
+            window.location.reload();
+        }
+    </script>
     </body>
 </html>
