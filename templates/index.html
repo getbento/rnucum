@@ -44,29 +44,27 @@
 
     
         <h2>{{ insult.name }}</h2>
-
         <br>
-        
-        <nav>
-            {% for item in navs.main %}
-                <a href=“{{ item.url }}“>{{ item.name }}</a>
-            {% endfor %}
-        </nav>
-            {% block body %}
-                <main class=“insult-container”>
-                    <h1>{{ insult.name }}</h1>
-                </main>
-                    <div class=“controls”>
-                        <div class=“refresh”>
-                            <button type=“submit” onclick=“refreshPage()“>MORE INSULTS PLS</button>
-                        </div>
-                    </div>
-            {% endblock %}
-    <script>
-        function refreshPage(){
-            window.location.reload();
-        }
-    </script>
+<nav>
+    {% for item in navs.main %}
+        <a href="{{ item.url }}">{{ item.name }}</a>
+    {% endfor %}
+</nav>
+{% block body %}
+<main class=“insult-container”>
+<h1>{{ insult.name }}</h1>
+</main>
+<div class=“controls”>
+    <div class=“refresh”>
+        <button type=“submit” onclick=refreshPage()>refresh</button>
+    </div>
+</div>
+{% endblock %}
+<script>
+function refreshPage(){
+    window.location.reload();
+}
+</script>
         <br>
 
         <em>Who made this theme? {{ theme.config.theme.name }}</em>
