@@ -1,17 +1,12 @@
 <html>
-
         {% set insult = boxes.insults.all|random %}
-
     <head>
         <title>{{ account.name }}</title>
-
         <style>
         body {
             background-color: {{ insult.fields.background_color }}
-            }
+        }
         </style>
-           
-            
     </head>
     <body>
         <nav>
@@ -20,12 +15,12 @@
             {% endfor %}
         </nav>
 {% block body %}
-    <main class=“insult-container”>
+    <main class="insult-container">
         <h1>{{ insult.name }}</h1>
     </main>
-        <div class=“controls”>
-            <div class=“refresh”>
-                <button type=“submit” onclick=refreshPage()>refresh</button>
+        <div class="controls">
+            <div class="refresh">
+                <button type="submit" onclick="refreshPage()">refresh</button>
             </div>
         </div>
 {% endblock %}
