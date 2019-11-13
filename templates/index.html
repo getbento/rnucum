@@ -1,33 +1,87 @@
 <html>
-        {% set insult = boxes.insults.all|random %}
-    <head>
-        <title>{{ account.name }}</title>
-        <style>
-        body {
-            background-color: {{ insult.fields.background_color }}
-        }
-        </style>
-    </head>
-    <body>
-        <nav>
-            {% for item in navs.main %}
-                <a href="{{ item.url }}">{{ item.name }}</a>
-            {% endfor %}
-        </nav>
-{% block body %}
-    <main class="insult-container">
-        <h1>{{ insult.name }}</h1>
+  {% set insult = boxes.insults.all|random %}
+  <head>
+    <title>{{ account.name }}</title>
+    <style>
+      body {
+          background-color: {{ insult.fields.background_color }}
+      }
+    </style>
+    <script src="{{ static('/js/html2canvas.min.js') }}"></script>
+  </head>
+  <body>
+    <nav>
+      {% for item in navs.main %}
+      <a href="{{ item.url }}">{{ item.name }}</a>
+      {% endfor %}
+    </nav>
+    {% block body %}
+    <main
+      id="insult-container"
+      class=""insult-container""
+      style="background-color: inherit; width: 600px; margin: auto; text-align: center;"
+    >
+      <h1>{{ insult.name }}</h1>
     </main>
-        <div class="controls">
-            <div class="refresh">
-                <button type="submit" onclick="refreshPage()">refresh</button>
-            </div>
-        </div>
-{% endblock %}
+    <div class=""controls"">
+      <div class=""refresh"">
+        <button type="submit" onclick="refreshPage()">refresh</button>
+      </div>
+      <div>
+        <button id="captureButton">capture</button>
+      </div>
+    </div>
+    {% endblock %}
+    <div
+      id="modal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 99999998;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);"
+    >
+      <button id="close-button" style="position: absolute; top: 0; right: 0;">
+        close
+      </button>
+    </div>
     <script>
-        function refreshPage(){
-            window.location.reload();
-        }
+      function refreshPage() {
+        window.location.reload();
+      }
     </script>
-    </body>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function(event) {
+        // Capture on button click and add to DOM
+        const captureButton = document.querySelector('#captureButton');
+        captureButton.addEventListener(
+          'click',
+          function(e) {
+            const modal = document.querySelector('#modal');
+            console.log(modal);
+            modal.style.display = 'flex';
+            const captureTarget = document.querySelector('#insult-container');
+            html2canvas(captureTarget).then(canvas => {
+              modal.appendChild(canvas);
+            });
+          },
+          false
+        );
+        // close modal and empty on button click
+        const closeButton = document.querySelector('#close-button');
+        closeButton.addEventListener('click', function(event) {
+          const modal = document.querySelector('#modal');
+          const image = document.querySelector('#modal canvas');
+          image.remove();
+          modal.style.display = 'none';
+        });
+      });
+    </script>
+  </body>
 </html>
